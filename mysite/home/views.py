@@ -8,14 +8,13 @@ def home(request):
     {'name':"Padam Chhetri",'age':20},
     {'name':"Adam chhetri",'age':17},
     {'name':"Deepak chhetri",'age':19},
-    {'name':"Viki chhetri",'age':24}
+    {'name':"Vik chhetri",'age':24}
   ]
   
-  vegetables=['Pumpkin','Tomato','Potato']
+  vegetables=['Cucumber','Tomato','Potato']
   # for people in peoples:
   #   print(people) #print in terminal
 
-  
   return render(request, "index.html",context={'title': "DjangoCourse",'peoples':peoples,'Vegetables':vegetables}) #Connect index.html  and used context to provide django data into html templates
   
 def about(request):
