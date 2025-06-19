@@ -11,19 +11,20 @@ def home(request):
     {'name':"Viki chhetri",'age':24}
   ]
   
-  
   vegetables=['Pumpkin','Tomato','Potato']
-  
   # for people in peoples:
   #   print(people) #print in terminal
 
-  return render(request, "index.html",context={'peoples':peoples,'Vegetables':vegetables}) #Connect index.html  and used context to provide django data into html templates
+  
+  return render(request, "index.html",context={'title': "DjangoCourse",'peoples':peoples,'Vegetables':vegetables}) #Connect index.html  and used context to provide django data into html templates
   
 def about(request):
-  return render(request, "about.html")
+  context={'title':'About'}
+  return render(request, "about.html",context)
 
 def contact(request):
-  return render(request, "contact.html")
+  context={'title':'Contact'}
+  return render(request, "contact.html",context)
 
 def success_page(request):
   print("*" *10)
