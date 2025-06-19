@@ -20,7 +20,7 @@ from home.views import *
 
 #Provide the URLpath of Home views
 urlpatterns = [
-    path('' , home, name="home"),
+    path(' ' , home, name="home"),
     path('about/', about,name="about"),
     path('contact/', contact, name="contact"),
     path('success-page/' , view=success_page,name="success_page"),
