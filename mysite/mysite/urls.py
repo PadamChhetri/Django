@@ -21,6 +21,8 @@ from home.views import *
 #Provide the URLpath of Home views
 urlpatterns = [
     path('' , home, name="home"),
-    path('success-page/' , success_page,name="success_page"),
+    path('about/', about,name="about"),
+    path('contact/', contact, name="contact"),
+    path('success-page/' , view=success_page,name="success_page"),
     path('admin/', admin.site.urls),
 ]

@@ -2,11 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Django Course</title>
+ <style>
+    table, th, td {
+      border: 1px solid;
+    }
+  </style>
 </head>
 <body>
-  <h1>This is a return by Django Server</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis voluptatibus nostrum incidunt repudiandae voluptatem aliquam ipsa, aut consequuntur iure placeat, et, quidem ad quibusdam delectus neque sit quisquam molestiae! Qui.</p>
+  <h1>This is index page</h1>
+   <a href="/about/">
+    about/
+  </a>
+   <a href="/contact/">
+    contact/
+  </a>
+  <!--{{peoples}} Render peoples data from backend django-->
+  <table class="container">
+  <tr>
+    <th>S NO</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Can Vote</th>
+  </tr>
+  {% for people in peoples%}
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{people.name}}</td>
+    <td>{{people.age}}</td>
+    <td> 
+       {% if people.age >= 18 %}
+        👍
+      {% else %}
+        👎
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<p>
+  {%if "cucumber" in vegetables%}
+    Yes Available
+  
+  {%else%} 
+    NO Available
+  {% endif %}
+</p>
+
+<script>
+  console.log("Hey this is JavaScripts")
+</script>
+
+
 </body>
 </html>
