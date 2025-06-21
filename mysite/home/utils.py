@@ -4,5 +4,5 @@ import time
 
 def run_this_function():
   print("Function started")
-  time.sleep(1)
+  time.sleep(4)
   print("Function Executed")
