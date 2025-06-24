@@ -2,24 +2,26 @@
 {% block start %}
 
 <div class="comntainer mt-5">
-  <form class="col-6 mx-auto card p-3 shadow-lg" method="post"> <!--  to get data from frontend to backend them use method:post  -->
-    
+
+  <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data"> <!--  to get data from frontend to backend them use method:post  -->
+  {% csrf_token %}
   <h2>Add Receipe</h2>
   <hr>
 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
-    <input type="text" class="form-control">
+    <input name="receipe_name" type="text" class="form-control" required>
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
-    <textarea class="form-control"></textarea>
+    <textarea name="description" class="form-control" required></textarea>
   </div>
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Receipe Image</label>
-    <input type="file" class="form-control">
+    <input name="image" type="file" required>
+
   </div>
 
   <button type="submit" class="btn btn-success">Add Receipe</button>
