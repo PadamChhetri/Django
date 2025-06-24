@@ -42,7 +42,9 @@ INSTALLED_APPS = [
 #Adding new application
 EXTERNAL_APPS= [
     'accounts', #adding new account Application
-    'home' #adding new home application 
+    'home',#adding new home application 
+    'veges'
+    
 ]
 
 INSTALLED_APPS= INSTALLED_APPS + EXTERNAL_APPS

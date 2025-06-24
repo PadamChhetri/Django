@@ -15,7 +15,7 @@ def home(request):
   # for people in peoples:
   #   print(people) #print in terminal
 
-  return render(request, "index.html",context={'title': "DjangoCourse",'peoples':peoples,'Vegetables':vegetables}) #Connect index.html  and used context to provide django data into html templates
+  return render(request, "index.html",context={'title': "DjangoCourse",'peoples':peoples,'Vegetables':vegetables}) #Connect index.html  and used "context" to provide django data into html templates -like from backend to frontend
   
 def about(request):
   context={'title':'About'}
