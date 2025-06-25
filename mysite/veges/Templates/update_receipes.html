@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div class="container mt-5">
+
+  <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data"> <!--  to get data from frontend to backend them use method:post  -->
+  {% csrf_token %}
+  <h2>Update Receipe</h2>
+  <hr>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
+    <input name="receipe_name" value="{{receipe.receipe_name}}" type="text" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
+    <textarea name="description" value="" class="form-control" required>{{receipe.description}}</textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Receipe Image</label>
+    <input name="image" type="file" required>
+
+  </div>
+  <button type="submit" class="btn btn-success">Update Receipe</button>
+</form>
+
+ {{recepies}}
+
+
+
+</div>
+
+{% endblock %}
