@@ -49,7 +49,7 @@
         <img src="/media/{{ receipe.image }}" style="height:200px">
       </td>
       <td>
-        <a href="delete-receipe/ {{receipe.id}}" class="btn btn-danger">Delete</button>
+       <a href="{% url 'delete_receipe' receipe.id %}" class="btn btn-danger">Delete</a>
       </td>
     </tr>
 
