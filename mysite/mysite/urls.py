@@ -18,13 +18,25 @@ from django.contrib import admin
 from django.urls import path
 from home.views import *
 from veges.views import *
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns  # also import this
 
 #Provide the URLpath of Home views
 urlpatterns = [
     path('' , home, name="home"),
     path('receipes/', receipes,name="receipes"),
+    path('delete-receipe/<id>/', delete_receipe,name="delete_receipe"),
     path('about/', about,name="about"),
     path('contact/', contact, name="contact"),
     path('success-page/' , view=success_page,name="success_page"),
     path('admin/', admin.site.urls),
 ]
+
+
+if settings.DEBUG:
+  urlpatterns+=static(settings.MEDIA_URL,
+                      document_root=settings.MEDIA_ROOT)
+  
+urlpatterns+=staticfiles_urlpatterns()
+  

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block start %}
 
-<div class="comntainer mt-5">
+<div class="container mt-5">
 
   <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data"> <!--  to get data from frontend to backend them use method:post  -->
   {% csrf_token %}
@@ -26,6 +26,38 @@
 
   <button type="submit" class="btn btn-success">Add Receipe</button>
 </form>
+
+ {{recepies}}
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Receipe_name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for receipe in receipes %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{ receipe.receipe_name }}</td>
+      <td>{{ receipe.description }}</td>
+      <td>
+        <img src="/media/{{ receipe.image }}" style="height:200px">
+      </td>
+      <td>
+        <a href="delete-receipe/ {{receipe.id}}" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+
+    {% endfor %}
+
+  </tbody>
+</table>
+
 </div>
 
 {% endblock %}
