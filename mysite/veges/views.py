@@ -3,8 +3,10 @@ from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate ,login
+from django.contrib.auth import authenticate ,login,logout
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url="/login/")
 # Add data.
 def receipes(request):
   if request.method== "POST":
@@ -32,6 +34,7 @@ def receipes(request):
   return render(request,"receipe.html",context)
 
 
+@login_required(login_url="/login/")
 #Update Data
 def update_receipe(request,id):
   queryset=Receipe.objects.get(id=id)
@@ -53,13 +56,14 @@ def update_receipe(request,id):
   return render(request,'update_receipes.html',context)
 
 
+@login_required(login_url="/login/")
 #Delete Data
 def delete_receipe(request,id):
   queryset=Receipe.objects.get(id=id)
   queryset.delete()
   return redirect("/receipes/")
 
-#login
+
 #login
 def login_page(request):
   if request.method == "POST":
@@ -82,7 +86,7 @@ def login_page(request):
   return render(request, 'login.html')
 
 
-  
+
 #Register
 def register(request):
   if request.method == "POST":
@@ -112,7 +116,8 @@ def register(request):
   return render(request,'register.html')
 
 
+#Logout
 def logout_page(request):
   logout(request)
-  return redirect("/register/")
+  return redirect("/login/")
   
