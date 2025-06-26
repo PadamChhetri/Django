@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block start %}
+
+<div class="container mt-5">
+
+<!-- Show JavaScript alert message if available -->
+  {% if messages %}
+    <script>
+      {% for message in messages %}
+        alert("{{ message|escapejs }}");
+      {% endfor %}
+    </script>
+  {% endif %}
+
+  <form
+    class="col-6 mx-auto card p-3 shadow-lg"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <!--  to get data from frontend to backend them use method:post  -->
+    {% csrf_token %}
+    <h2>Register</h2>
+    <hr />
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">First Name</label>
+      <input
+        type="text"
+        name="first_name"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        required
+      />
+    </div>
+       <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Last Name</label>
+      <input
+        type="text"
+        name="last_name"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        required
+      />
+    </div>   <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Username</label>
+      <input
+        type="text"
+        name="username"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" 
+      name="password"
+      class="form-control" id="exampleInputPassword1" 
+      required />
+    </div>
+    <p>Already have account <a href="/login/">Register</a> </p>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+{% endblock %}
