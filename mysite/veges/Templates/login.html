@@ -1,6 +1,18 @@
 {% extends "base.html" %} {% block start %}
 
 <div class="container mt-5">
+
+   {% if messages %}
+    {% for message in messages %}
+      <div id="msg-alert" class="col-6 mx-auto">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+
   <form
     class="col-6 mx-auto card p-3 shadow-lg"
     method="post"
@@ -13,16 +25,18 @@
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Username</label>
       <input
-        type="email"
+        type="text"
         class="form-control"
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
+        name="username"
         required
       />
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
       <input type="password" class="form-control" id="exampleInputPassword1"
+      name="password"
       required />
     </div>
 

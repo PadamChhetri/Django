@@ -3,6 +3,7 @@ from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate ,login
 
 # Add data.
 def receipes(request):
@@ -59,8 +60,27 @@ def delete_receipe(request,id):
   return redirect("/receipes/")
 
 #login
+#login
 def login_page(request):
-  return render(request,'login.html')
+  if request.method == "POST":
+    username=request.POST.get('username')
+    password=request.POST.get('password')
+
+    if not User.objects.filter(username=username).exists():
+      messages.error(request, "Invalid Usename")  
+      return redirect("/login/")
+
+    user= authenticate(username=username,password=password)
+    
+    if user is None:
+      messages.error(request, "Invalid Usename")  
+      return redirect("/login/")
+    else:
+      login(request,user)
+      return redirect("/receipes/")
+
+  return render(request, 'login.html')
+
 
   
 #Register
@@ -90,3 +110,9 @@ def register(request):
 
     return redirect("/register/")
   return render(request,'register.html')
+
+
+def logout_page(request):
+  logout(request)
+  return redirect("/register/")
+  

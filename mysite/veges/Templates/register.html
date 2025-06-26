@@ -3,12 +3,15 @@
 <div class="container mt-5">
 
 <!-- Show JavaScript alert message if available -->
-  {% if messages %}
-    <script>
-      {% for message in messages %}
-        alert("{{ message|escapejs }}");
-      {% endfor %}
-    </script>
+{% if messages %}
+    {% for message in messages %}
+      <div id="msg-alert" class="col-6 mx-auto">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    {% endfor %}
   {% endif %}
 
   <form
