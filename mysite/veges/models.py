@@ -18,7 +18,7 @@ class Department(models.Model):
       return self.department
     
   class Meta:
-      ordering=['department']
+      ordering=['department'] #Store Sequently
 
 
 class StudentID(models.Model):
@@ -28,7 +28,7 @@ class StudentID(models.Model):
     
 class Student(models.Model):
   department=models.ForeignKey(Department, related_name="depart", on_delete=models.CASCADE)
-  student_id=models.ForeignKey(StudentID, related_name="studentid", on_delete=models.CASCADE)
+  student_id=models.OneToOneField(StudentID, related_name="studentid", on_delete=models.CASCADE)
   student_name=models.CharField( max_length=50)
   student_email=models.EmailField( unique=True)
   student_age=models.IntegerField(default=18)
@@ -40,4 +40,4 @@ class Student(models.Model):
     
   class Meta:
     ordering=['student_name']
-    verbose_name='student'
+    verbose_name='student' 
