@@ -28,7 +28,10 @@ class StudentID(models.Model):
   
 
 class Subject(models.Model):
-  subject_name=models.CharField( max_length=100)            
+  subject_name=models.CharField( max_length=100)    
+
+  def __str__(self) -> str:
+     return self.subject_name    
 
 class Student(models.Model):
   department=models.ForeignKey(Department, related_name="depart", on_delete=models.CASCADE)
